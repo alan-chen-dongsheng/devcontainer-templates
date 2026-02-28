@@ -7,6 +7,14 @@ ARG USERNAME=vscode
 # Use bash with pipefail for all RUN commands
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+# ── LLVM prerequisites ───────────────────────────────────────────────────────
+# llvm.sh requires add-apt-repository (software-properties-common) and gnupg.
+# Install these first before running the LLVM installer script.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        software-properties-common \
+        gnupg \
+    && rm -rf /var/lib/apt/lists/*
+
 # ── LLVM / Clang (full toolchain) ────────────────────────────────────────────
 # Use curl only (no wget) to satisfy DL4001
 RUN curl -fsSL https://apt.llvm.org/llvm.sh -o /tmp/llvm.sh \
