@@ -18,8 +18,10 @@
 "PATH": "${containerEnv:PATH}:/usr/lib/node_modules/.bin"
 },
 
-// ── Post-create: install a default Python and seed workspace config ──────
+// ── Lifecycle scripts ─────────────────────────────────────────────────────
 "postCreateCommand": "bash .devcontainer/post-create.sh",
+	// post-start: runs every time the container starts — prints env health report.
+	"postStartCommand": "bash .devcontainer/check-env.sh",
 
 // ── Extensions ───────────────────────────────────────────────────────────
 "customizations": {
