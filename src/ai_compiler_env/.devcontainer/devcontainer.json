@@ -4,10 +4,17 @@
     "build": {
         "dockerfile": "Dockerfile",
         "args": {
-            "LLVM_VERSION": "20",
-            "NODE_VERSION": "22"
+            "LLVM_VERSION": "${templateOption:llvmVersion}",
+            "NODE_VERSION": "${templateOption:nodeVersion}"
         }
     },
+
+    // ── Mounts ───────────────────────────────────────────────────────────────
+    // Share host Copilot credentials — container needs no re-login.
+    "mounts": [
+        "source=${localEnv:HOME}/.copilot,target=/home/vscode/.copilot,type=bind,consistency=cached"
+    ],
+
     // ── Compiler environment ─────────────────────────────────────────────────
     "remoteEnv": {
         "CC": "clang",
