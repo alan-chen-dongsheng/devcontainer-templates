@@ -1,0 +1,27 @@
+{
+    "id": "python",
+    "version": "1.0.0",
+    "name": "Python 3",
+    "description": "Develop Python 3 applications.",
+    "documentationURL": "https://github.com/sexjun/devcontainer-templates/tree/main/src/python",
+    "publisher": "sexjun",
+    "licenseURL": "https://github.com/sexjun/devcontainer-templates/blob/main/LICENSE",
+    "options": {
+        "imageVariant": {
+            "type": "string",
+            "description": "Python version (use -bookworm variants on local arm64/Apple Silicon):",
+            "proposals": [
+                "3-bookworm",
+                "3.13-bookworm",
+                "3.12-bookworm",
+                "3.11-bookworm",
+                "3.10-bookworm"
+            ],
+            "default": "3-bookworm"
+        }
+    },
+    "platforms": ["Python"],
+    "optionalPaths": [
+        ".github/*"
+    ]
+}
