@@ -3,12 +3,9 @@
     "name": "AI Compiler Environment",
     "build": {
         "dockerfile": "Dockerfile",
-        // templateOption values are substituted by `devcontainer templates apply`.
-        // When building directly (VS Code / docker build), ARG defaults in the
-        // Dockerfile are used (LLVM_VERSION=20, NODE_VERSION=22).
         "args": {
-            "LLVM_VERSION": "${templateOption:llvmVersion}",
-            "NODE_VERSION": "${templateOption:nodeVersion}"
+            "LLVM_VERSION": "20",
+            "NODE_VERSION": "22"
         }
     },
 

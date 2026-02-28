@@ -65,20 +65,27 @@ RUN npm install -g \
 USER ${USERNAME}
 WORKDIR /home/${USERNAME}
 
-# oh-my-zsh — single quotes intentional: $() must NOT expand at build time
+# oh-my-zsh — base image may already have it installed; skip if so.
 # hadolint ignore=SC2016
-RUN RUNZSH=no CHSH=no \
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
-    "" --unattended
+RUN if [ ! -d "${HOME}/.oh-my-zsh" ]; then \
+        RUNZSH=no CHSH=no \
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
+        "" --unattended; \
+    fi
 
 # Third-party zsh plugins (git + extract are bundled with oh-my-zsh)
-RUN git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git \
-        "${HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" \
-    && git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git \
-        "${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+RUN if [ ! -d "${HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then \
+        git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git \
+            "${HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"; \
+    fi \
+    && if [ ! -d "${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then \
+        git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git \
+            "${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"; \
+    fi
 
-# Enable plugins in .zshrc
-RUN sed -i 's/^plugins=(git)/plugins=(git zsh-syntax-highlighting zsh-autosuggestions extract)/' "${HOME}/.zshrc"
+# Replace whatever plugins line exists in .zshrc with the desired set.
+# Uses .* to match any existing plugins list, not just the default (git).
+RUN sed -i 's/^plugins=(.*)/plugins=(git zsh-syntax-highlighting zsh-autosuggestions extract)/' "${HOME}/.zshrc"
 
 # uv — single quotes intentional: $HOME must expand at shell runtime, not build time
 # hadolint ignore=SC2016
