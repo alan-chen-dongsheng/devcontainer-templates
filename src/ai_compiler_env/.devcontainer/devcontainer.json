@@ -4,8 +4,8 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		"args": {
-			"LLVM_VERSION": "${templateOption:llvmVersion}",
-			"NODE_VERSION": "${templateOption:nodeVersion}"
+			"LLVM_VERSION": "20",
+			"NODE_VERSION": "22"
 		}
 	},
 
