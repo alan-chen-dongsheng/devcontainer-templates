@@ -43,6 +43,19 @@ RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
     && apt-get install -y --no-install-recommends nodejs \
     && rm -rf /var/lib/apt/lists/*
 
+# ── LSP servers (TypeScript / JavaScript / Python) ───────────────────────────
+# typescript-language-server  → TS/JS LSP (used by VS Code & other editors)
+# pyright                     → Python type-checker / LSP server
+# vscode-langservers-extracted → JSON, HTML, CSS, Markdown LSP servers
+RUN npm install -g \
+    typescript \
+    typescript-language-server \
+    pyright \
+    vscode-langservers-extracted \
+    @typescript-eslint/parser \
+    @typescript-eslint/eslint-plugin \
+    eslint
+
 # ── User-level setup (oh-my-zsh, plugins, uv, rust) ──────────────────────────
 USER ${USERNAME}
 WORKDIR /home/${USERNAME}
