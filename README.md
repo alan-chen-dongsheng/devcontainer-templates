@@ -13,7 +13,7 @@ A collection of reusable [Dev Container](https://containers.dev/) templates for 
 ### With the devcontainer CLI
 
 ```bash
-devcontainer templates apply -t ghcr.io/sexjun/devcontainer-templates/python
+devcontainer templates apply -t ghcr.io/alan-chen-dongsheng/devcontainer-templates/python
 ```
 
 ## Available Templates

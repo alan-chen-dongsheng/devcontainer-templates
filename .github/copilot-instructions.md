@@ -2,7 +2,7 @@
 
 ## Repository purpose
 This repo contains reusable [Dev Container](https://containers.dev/) templates published to
-`ghcr.io/sexjun/devcontainer-templates`. Each template lives under `src/<template-id>/`.
+`ghcr.io/alan-chen-dongsheng/devcontainer-templates`. Each template lives under `src/<template-id>/`.
 
 ---
 

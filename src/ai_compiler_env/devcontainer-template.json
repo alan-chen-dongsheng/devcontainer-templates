@@ -3,9 +3,9 @@
     "version": "1.0.0",
     "name": "AI Compiler Environment",
     "description": "Full-featured compiler/AI development environment: LLVM/Clang toolchain, ccache (unlimited), zsh + oh-my-zsh, Python (uv), Node.js, and Rust.",
-    "documentationURL": "https://github.com/sexjun/devcontainer-templates/tree/main/src/ai_compiler_env",
-    "publisher": "sexjun",
-    "licenseURL": "https://github.com/sexjun/devcontainer-templates/blob/main/LICENSE",
+    "documentationURL": "https://github.com/alan-chen-dongsheng/devcontainer-templates/tree/main/src/ai_compiler_env",
+    "publisher": "alan-chen-dongsheng",
+    "licenseURL": "https://github.com/alan-chen-dongsheng/devcontainer-templates/blob/main/LICENSE",
     "options": {
         "llvmVersion": {
             "type": "string",
