@@ -13,6 +13,7 @@ jobs:
         with:
           filters: |
             python: ./**/python/**
+            ai_compiler_env: ./**/ai_compiler_env/**
 
   test:
     needs: [detect-changes]

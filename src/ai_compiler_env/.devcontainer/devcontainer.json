@@ -1,0 +1,47 @@
+// For format details, see https://aka.ms/devcontainer.json
+{
+	"name": "AI Compiler Environment",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			"LLVM_VERSION": "${templateOption:llvmVersion}",
+			"NODE_VERSION": "${templateOption:nodeVersion}"
+		}
+	},
+
+	// C/C++ compiler environment – ccache intercepts clang/clang++ transparently.
+	"remoteEnv": {
+		"CC": "clang",
+		"CXX": "clang++",
+		"CCACHE_CONFIGPATH": "/etc/ccache.conf"
+	},
+
+	// Use zsh as the integrated terminal shell.
+	"terminal.integrated.defaultProfile.linux": "zsh",
+
+	// Recommended extensions for C++/Python/Rust/Node development.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"llvm-vs-code-extensions.vscode-clangd",
+				"vadimcn.vscode-lldb",
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"charliermarsh.ruff",
+				"rust-lang.rust-analyzer",
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode"
+			],
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "zsh",
+				"C_Cpp.intelliSenseEngine": "disabled",
+				"[cpp]": {
+					"editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+				},
+				"clangd.path": "/usr/bin/clangd"
+			}
+		}
+	},
+
+	"remoteUser": "vscode"
+}

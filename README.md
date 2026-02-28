@@ -21,6 +21,7 @@ devcontainer templates apply -t ghcr.io/sexjun/devcontainer-templates/python
 | Template | Description |
 |----------|-------------|
 | [python](src/python) | Python 3 development environment |
+| [ai_compiler_env](src/ai_compiler_env) | LLVM/Clang + ccache + zsh + Python (uv) + Node.js + Rust |
 
 ## Contributing
 
