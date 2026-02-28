@@ -1,6 +1,6 @@
 {
     "id": "ai_compiler_env",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "name": "AI Compiler Environment",
     "description": "Full-featured compiler/AI development environment: LLVM/Clang toolchain, ccache (unlimited), zsh + oh-my-zsh, Python (uv), Node.js, and Rust.",
     "documentationURL": "https://github.com/alan-chen-dongsheng/devcontainer-templates/tree/main/src/ai_compiler_env",
