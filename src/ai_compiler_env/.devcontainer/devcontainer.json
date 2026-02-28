@@ -12,7 +12,12 @@
     // ── Mounts ───────────────────────────────────────────────────────────────
     // Share host Copilot credentials — container needs no re-login.
     "mounts": [
-        "source=${localEnv:HOME}/.copilot,target=/home/vscode/.copilot,type=bind,consistency=cached"
+        // Share host Copilot credentials — no re-login needed inside container.
+        "source=${localEnv:HOME}/.copilot,target=/home/vscode/.copilot,type=bind,consistency=cached",
+        // Share host git config — preserves user.name, user.email, aliases, etc.
+        "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached",
+        // Share host SSH keys — enables git push/pull over SSH without re-setup.
+        "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"
     ],
 
     // ── Compiler environment ─────────────────────────────────────────────────
