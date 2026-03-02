@@ -8,7 +8,10 @@
             "NODE_VERSION": "22"
         }
     },
-
+    "features": {
+        "ghcr.io/devcontainers/features/copilot-cli:1": {},
+        "ghcr.io/stu-bell/devcontainer-features/claude-code:0": {}
+    },
     // ── Mounts ───────────────────────────────────────────────────────────────
     // Share host Copilot credentials — container needs no re-login.
     "mounts": [
@@ -19,7 +22,6 @@
         // Share host SSH keys — enables git push/pull over SSH without re-setup.
         "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"
     ],
-
     // ── Compiler environment ─────────────────────────────────────────────────
     "remoteEnv": {
         "CC": "clang",
